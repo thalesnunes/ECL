@@ -1,7 +1,7 @@
 ﻿IMPORT $, STD;
 
-Crimes := $.File_Crimes.File;
-Layout := $.File_Crimes.Layout;
+Crimes := $.File_CrimesPadr.File;
+Layout := $.File_CrimesPadr.Layout;
 
 RecSlimCrimes := RECORD
 	Layout AND NOT Block AND NOT District AND NOT Community_Area;
