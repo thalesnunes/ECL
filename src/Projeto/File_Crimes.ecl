@@ -1,0 +1,35 @@
+﻿EXPORT File_Crimes := MODULE
+ EXPORT Layout := RECORD
+    STRING8 cnpj;
+    STRING4;
+    STRING2;
+    UNSIGNED1;
+    STRING55;
+    STRING2;
+    UNSIGNED4;
+    STRING2;
+    STRING44;
+    STRING3;
+    UNSIGNED4;
+    STRING7;
+    STRING791;
+    STRING20;
+    STRING60;
+    STRING6;
+    STRING156;
+    STRING50;
+    STRING8;
+    STRING2;
+    STRING4;
+    STRING4;
+    STRING8;
+    STRING4;
+    STRING8;
+    STRING4;
+    STRING8;
+    STRING94;
+    STRING25;
+    UNSIGNED4;
+	END;
+EXPORT File := DATASET('~class::takn372::estabelecimentos',Layout,CSV);
+END;
