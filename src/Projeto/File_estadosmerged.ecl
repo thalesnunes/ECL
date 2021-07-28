@@ -65,10 +65,10 @@ EXPORT File_estadosmerged := MODULE
 
 	Estados := MERGE(ACS, AMS, ESS, ALS, APS, CES, BAS, MGS, MAS, PBS, SPCAPS, SPS, PRS, PIS, PES, RJS, RNS, SES, RRS, ROS, TOS, SORTED(GEOCODIGO));
 
-estados_clean := RECORD
-	Estados.GEOCODIGO;
-	Estados.PONTO_INICIAL;
-	END;
+	estados_clean := RECORD
+		Estados.GEOCODIGO;
+		Estados.PONTO_INICIAL;
+		END;
 
 EXPORT estados_cleaned := TABLE(Estados, estados_clean);
 END;

@@ -1,4 +1,4 @@
 IMPORT $;
-Aguas := $.File_Aguas.File;
+Aguas := $.File_AguasClean.File;
 
 OUTPUT(Aguas);

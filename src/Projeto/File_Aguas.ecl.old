@@ -1,0 +1,31 @@
+﻿EXPORT File_Aguas := MODULE
+    EXPORT Layout := RECORD
+    STRING519 field1;
+    STRING10 FID_trecho;
+    STRING8 OBJECTID;
+    STRING43 NORIOCOMP;
+    STRING10 Frequencia;
+    STRING7 Impacto;
+    STRING10 Vulnerabil;
+    STRING10 FID_lm_mun;
+    STRING4 PK;
+    STRING6 COD_MD;
+    STRING10 GEOMETRIA_;
+    STRING29 NM_NNG;
+    STRING9 GEOCODIGO;
+    STRING2 UF;
+    STRING10 DATA_ALTER;
+    STRING10 METODO_ALT;
+    STRING18 FONTE_INFO;
+    STRING10 geocodig_1;
+    STRING29 nome_mun;
+    STRING10 total_pop_;
+    STRING10 total_home;
+    STRING10 total_mulh;
+    STRING10 total_pop1;
+    STRING10 total_po_1;
+    STRING10 total_po_2;
+    STRING520 geometry___;
+    END;
+EXPORT File :=  DATASET('~proj::bbc::vulnerabilidade_inundacoes',Layout,CSV(heading(1)));
+END;
