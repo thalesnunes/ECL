@@ -1,4 +1,5 @@
 IMPORT $;
-Aguas := $.File_AguasClean.File;
+
+Aguas := $.File_AguasCSVClean.File;
 
 OUTPUT(Aguas);

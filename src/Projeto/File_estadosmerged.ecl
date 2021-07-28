@@ -4,7 +4,7 @@ EXPORT File_estadosmerged := MODULE
 
 	EXPORT Layout := RECORD
 
-		UNSIGNED7 GEOCODIGO;
+		STRING GEOCODIGO;
 		UNSIGNED1 UF;
 		STRING5 MUN;
 		STRING2 DISTR;
@@ -66,9 +66,17 @@ EXPORT File_estadosmerged := MODULE
 	Estados := MERGE(ACS, AMS, ESS, ALS, APS, CES, BAS, MGS, MAS, PBS, SPCAPS, SPS, PRS, PIS, PES, RJS, RNS, SES, RRS, ROS, TOS, SORTED(GEOCODIGO));
 
 	estados_clean := RECORD
-		Estados.GEOCODIGO;
+		UNSIGNED7 GEOCODIGO;
 		Estados.PONTO_INICIAL;
 		END;
 
-EXPORT estados_cleaned := TABLE(Estados, estados_clean);
+	estados_clean ReduceGeocodigo(Layout Le) := TRANSFORM
+		SELF.GEOCODIGO := (UNSIGNED7) Le.GEOCODIGO[1..7];
+		SELF := Le;
+	END;
+
+	EstadosClean := PROJECT(Estados, ReduceGeocodigo(LEFT));
+	FinalEstados := DEDUP(SORT(EstadosClean, geocodigo, -ponto_inicial)(EstadosClean.geocodigo >= 1100000), LEFT.GEOCODIGO=RIGHT.GEOCODIGO);
+
+EXPORT File := FinalEstados;
 END;
