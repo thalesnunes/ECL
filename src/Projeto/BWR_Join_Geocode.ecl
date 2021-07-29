@@ -1,5 +1,6 @@
-IMPORT $, STD;
+IMPORT $, Visualizer;
 
+// Join
 Aguas := $.File_AguasCSVClean.File;
 Estados := $.File_estadosmerged.File;
 
@@ -19,3 +20,15 @@ END;
 GeocodigoJoined := JOIN(Aguas, Estados, LEFT.GEOCODIGO=RIGHT.GEOCODIGO, JoinGeocodigo(LEFT, RIGHT));
 
 OUTPUT(GeocodigoJoined,,'~proj::bbc::GeocodigoJoined', overwrite);
+
+// Crosstab report
+CntRec := RECORD
+	GeocodigoJoined.SCORE;
+	cnt := COUNT(GROUP);
+END;
+
+CTRep := SORT(TABLE(GeocodigoJoined,CntRec,SCORE),SCORE);
+OUTPUT(CTRep,NAMED('end_por_score'), overwrite);
+
+// Visualization
+Visualizer.MultiD.Column('Enderecos_Score',,'end_por_score');

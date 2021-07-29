@@ -76,7 +76,7 @@ EXPORT File_estadosmerged := MODULE
 	END;
 
 	EstadosClean := PROJECT(Estados, ReduceGeocodigo(LEFT));
-	FinalEstados := DEDUP(SORT(EstadosClean, geocodigo, -ponto_inicial)(EstadosClean.geocodigo >= 1100000), LEFT.GEOCODIGO=RIGHT.GEOCODIGO);
+	FinalEstados := SORT(EstadosClean, geocodigo, -ponto_inicial)(EstadosClean.geocodigo >= 1100000);
 
 EXPORT File := FinalEstados;
 END;
